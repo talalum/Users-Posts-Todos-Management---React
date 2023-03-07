@@ -16,10 +16,10 @@ const User = ({ user, deleteUserCallback}) => {
         email: user.email,
     });
     const [todos, setTodos] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [taskCompleted, setTaskCompleted] = useState(true);
     const [displayAddress, setDisplayAddress] = useState(false);
 
-    const [posts, setPosts] = useState([]);
 
     const [showPosts, setShowPosts] = useState(false);
     const [showTodos, setShowTodos] = useState(false);
@@ -38,11 +38,14 @@ const User = ({ user, deleteUserCallback}) => {
     useEffect(() => {
         todos?.forEach(todo => {
             if (!todo?.completed) {
+                console.log(todo);
+                console.log("ifff");
                 setTaskCompleted(false);
             }
-            // if (todo.userId == 1){
+            // if (todo?.userId == '1' || todo?.userId == '2'){
+            //     console.log(todo);
             //     console.log("asss");
-            //     setTaskCompleted(false)
+            //     setTaskCompleted(true)
             // }
         })
     }, [todos])

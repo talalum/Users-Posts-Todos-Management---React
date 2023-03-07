@@ -58,6 +58,11 @@
     border: 2px solid red;
 }
 
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
 .users {
     border: 3px solid black;
     width: max-content;
@@ -188,4 +193,22 @@
 .add-btn:hover {
     background: rgb(120, 221, 120);
     color: green;
+}
+
+.add-post{
+
+}
+
+.add-user-form{
+    border: 2px solid pink;
+    margin-top: 50px;
+    margin-left: 20px;
+    padding: 20px;
+    height: max-content;
+}
+
+.add-user-buttons{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
 }
