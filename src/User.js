@@ -9,7 +9,7 @@ import PostAndTodos from './PostAndTodos';
 const todosUrl = 'https://jsonplaceholder.typicode.com/todos';
 const usersUrl = 'https://jsonplaceholder.typicode.com/users';
 const postsUrl = 'https://jsonplaceholder.typicode.com/posts';
-const User = ({ user, deleteUserCallback}) => {
+const User = ({ user, deleteUserCallback }) => {
     const [userData, setuserData] = useState({
         id: user.id,
         username: user.username,
@@ -36,10 +36,10 @@ const User = ({ user, deleteUserCallback}) => {
     }, [])
 
     useEffect(() => {
+        console.log("here!");
+        const flag = taskCompleted;
         todos?.forEach(todo => {
             if (!todo?.completed) {
-                console.log(todo);
-                console.log("ifff");
                 setTaskCompleted(false);
             }
             // if (todo?.userId == '1' || todo?.userId == '2'){
@@ -47,9 +47,12 @@ const User = ({ user, deleteUserCallback}) => {
             //     console.log("asss");
             //     setTaskCompleted(true)
             // }
-        })
+        });
+        if (flag) {
+            setTaskCompleted(true);
+        }
     }, [todos])
-    
+
 
     const updateUser = async () => await updateItem(usersUrl, user.id, userData);
 
@@ -84,7 +87,7 @@ const User = ({ user, deleteUserCallback}) => {
                     </div>
                 </div>
             </div>
-            <PostAndTodos posts={posts} todos={todos} showPosts={showPosts} showTodos={showTodos} userId={user.id}/>
+            <PostAndTodos posts={posts} todos={todos} showPosts={showPosts} showTodos={showTodos} userId={user.id} />
         </div>
     )
 }

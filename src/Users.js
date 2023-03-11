@@ -33,7 +33,6 @@ const Users = () => {
 
 
     const updateSearchValue = (e) => {
-        console.log(users);
         setSearchValue(e.target.value);
     }
 
@@ -41,17 +40,18 @@ const Users = () => {
         const userIndex = users.findIndex((u) => u.id === id)
         console.log(userIndex);
         if (userIndex !== -1) {
-            users.splice(userIndex, 1);
-            console.log(users);
-            setUsers(users);
+            const newUsers = users;
+            console.log("before", newUsers);
+            newUsers.splice(userIndex, 1);
+            console.log("hello", newUsers);
+            setUsers(newUsers);
         }
     }
 
     const addUser = async () => {
         await addItem(usersUrl, newUser)
-        // setDisplayAddUserForm(false);
     }
-
+    
     return (
         <div className='container'>
             <div className='users'>
@@ -61,7 +61,7 @@ const Users = () => {
                 </div><br /><br />
                 {
                     users.map(user => {
-                        return <User key={user.id} user={user} deleteUserCallback={deleteUserFromUsersList} />
+                        return <User key={user?.id} user={user} deleteUserCallback={deleteUserFromUsersList} />
                     })
                 }
             </div>
